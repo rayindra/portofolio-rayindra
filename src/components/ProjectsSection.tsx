@@ -8,6 +8,7 @@ const projects = [
       "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",
     tech: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/rayindra/rays-print-shop",
+    live: "https://e-rays.netlify.app/",
   },
   {
     title: "IF22 : Outbreak",
@@ -57,7 +58,13 @@ const ProjectsSection = () => {
                 </div>
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                {project.title}
+                {project.live ? (
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    {project.title}
+                  </a>
+                ) : (
+                  project.title
+                )}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
                 {project.description}
