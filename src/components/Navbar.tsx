@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 const navItems = ["Tentang", "Keahlian", "Pengalaman", "Proyek", "Kontak"];
 
 const Navbar = () => {
@@ -19,12 +21,15 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <a
-          href="#kontak"
-          className="text-sm border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-        >
-          Hubungi Saya
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="#kontak"
+            className="text-sm border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          >
+            Hubungi Saya
+          </a>
+        </div>
       </div>
     </nav>
   );
