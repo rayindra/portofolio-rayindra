@@ -8,6 +8,7 @@ const projects = [
       "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",
     tech: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/rayindra/rays-print-shop",
+    live: "https://e-rays.netlify.app/",
   },
   {
     title: "IF22 : Outbreak",
