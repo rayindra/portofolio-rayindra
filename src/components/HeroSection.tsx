@@ -24,7 +24,7 @@ const HeroSection = () => {
             Rayindra Satrya F.
           </h1>
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-muted-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Saya membangun solusi digital.
+            IT Enthusiast
           </h2>
           <p className="text-muted-foreground max-w-lg text-lg leading-relaxed mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
             Seorang IT Enthusiast yang berpengalaman dalam front-end, back-end,
