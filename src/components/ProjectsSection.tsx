@@ -48,10 +48,10 @@ const ProjectsSection = () => {
               <div className="flex items-center justify-between mb-5">
                 <Folder className="text-primary" size={32} strokeWidth={1.5} />
                 <div className="flex gap-3 text-muted-foreground">
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     <Github size={18} />
                   </a>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     <ExternalLink size={18} />
                   </a>
                 </div>
