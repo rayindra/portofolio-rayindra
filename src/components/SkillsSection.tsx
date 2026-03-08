@@ -1,4 +1,4 @@
-import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, type LucideIcon } from "lucide-react";
+import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, Cpu, Wrench, type LucideIcon } from "lucide-react";
 
 interface SkillItem {
   name: string;
@@ -38,11 +38,13 @@ const skills: SkillGroup[] = [
     category: "Hardware & Jaringan",
     icon: Wifi,
     items: [
+      { name: "PC Building", icon: Cpu },
+      { name: "Hardware Maintenance", icon: Wrench },
+      { name: "Software Maintenance", icon: MonitorCog },
       { name: "Networking", icon: Network },
-      { name: "Mikrotik", icon: Router },
-      { name: "Cisco", icon: Shield },
-      { name: "Troubleshooting", icon: MonitorCog },
-      { name: "Linux", icon: Terminal },
+      { name: "Mikrotik & Cisco", icon: Router },
+      { name: "Troubleshooting", icon: Shield },
+      { name: "Linux Administration", icon: Terminal },
     ],
   },
 ];
