@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Folder } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
@@ -22,20 +23,24 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="proyek" className="section-padding">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="font-heading text-2xl font-bold mb-2">
-          <span className="text-primary mr-2">03.</span>
-          Proyek
-        </h2>
-        <div className="h-px bg-border mt-2 mb-10" />
+      <div ref={ref} className="max-w-4xl mx-auto">
+        <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <h2 className="font-heading text-2xl font-bold mb-2">
+            <span className="text-primary mr-2">03.</span>
+            Proyek
+          </h2>
+          <div className="h-px bg-border mt-2 mb-10" />
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, i) => (
             <div
               key={project.title}
-              className="glass-card p-6 hover:border-primary/30 transition-all duration-300 group flex flex-col"
-              style={{ borderColor: "hsla(220, 14%, 18%, 0.6)" }}
+              className={`glass-card p-6 hover:border-primary/30 transition-all duration-700 group flex flex-col hover:-translate-y-2 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
+              style={{ transitionDelay: `${200 + i * 150}ms`, borderColor: "hsla(220, 14%, 18%, 0.6)" }}
             >
               <div className="flex items-center justify-between mb-5">
                 <Folder className="text-primary" size={32} strokeWidth={1.5} />

@@ -1,4 +1,5 @@
 import { Briefcase, Users, Calendar } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface TimelineItem {
   title: string;
@@ -40,52 +41,67 @@ const experiences: TimelineItem[] = [
 ];
 
 const ExperienceSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+  const { ref: orgRef, isVisible: orgVisible } = useScrollReveal();
+
   return (
     <section id="pengalaman" className="section-padding relative">
-      <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className="font-heading text-2xl font-bold mb-2">
-          <span className="text-primary mr-2">03.</span>
-          Pengalaman
-        </h2>
-        <div className="h-px bg-border mt-2 mb-10" />
+      <div ref={ref} className="max-w-4xl mx-auto relative z-10">
+        <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <h2 className="font-heading text-2xl font-bold mb-2">
+            <span className="text-primary mr-2">03.</span>
+            Pengalaman
+          </h2>
+          <div className="h-px bg-border mt-2 mb-10" />
+        </div>
 
         {/* Pengalaman Kerja */}
-        <h3 className="font-heading text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
-          <Briefcase size={18} className="text-primary" />
-          Pengalaman Kerja
-        </h3>
-        <div className="relative ml-4 mb-12">
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-primary/30" />
-          {experiences
-            .filter((e) => e.type === "work")
-            .map((item, i) => (
-              <TimelineCard key={i} item={item} />
-            ))}
+        <div className={`transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}>
+          <h3 className="font-heading text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
+            <Briefcase size={18} className="text-primary" />
+            Pengalaman Kerja
+          </h3>
+          <div className="relative ml-4 mb-12">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-primary/30" />
+            {experiences
+              .filter((e) => e.type === "work")
+              .map((item, i) => (
+                <TimelineCard key={i} item={item} delay={300 + i * 150} isVisible={isVisible} />
+              ))}
+          </div>
         </div>
 
         {/* Pengalaman Organisasi */}
-        <h3 className="font-heading text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
-          <Users size={18} className="text-primary" />
-          Pengalaman Organisasi
-        </h3>
-        <div className="relative ml-4">
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-primary/30" />
-          {experiences
-            .filter((e) => e.type === "organization")
-            .map((item, i) => (
-              <TimelineCard key={i} item={item} />
-            ))}
+        <div
+          ref={orgRef}
+          className={`transition-all duration-700 ${orgVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}
+        >
+          <h3 className="font-heading text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
+            <Users size={18} className="text-primary" />
+            Pengalaman Organisasi
+          </h3>
+          <div className="relative ml-4">
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-primary/30" />
+            {experiences
+              .filter((e) => e.type === "organization")
+              .map((item, i) => (
+                <TimelineCard key={i} item={item} delay={200 + i * 150} isVisible={orgVisible} />
+              ))}
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const TimelineCard = ({ item }: { item: TimelineItem }) => (
-  <div className="relative pl-8 pb-8 last:pb-0 group">
+const TimelineCard = ({ item, delay, isVisible }: { item: TimelineItem; delay: number; isVisible: boolean }) => (
+  <div
+    className={`relative pl-8 pb-8 last:pb-0 group transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+    style={{ transitionDelay: `${delay}ms` }}
+  >
     {/* Dot */}
     <div className="absolute left-0 top-1 -translate-x-1/2 w-3 h-3 rounded-full bg-primary/30 border-2 border-primary group-hover:bg-primary transition-colors duration-300" />
-    <div className="glass-card p-5 hover:border-primary/30 transition-all duration-300">
+    <div className="glass-card p-5 hover:border-primary/30 transition-all duration-300 hover:-translate-y-0.5">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <h4 className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">
