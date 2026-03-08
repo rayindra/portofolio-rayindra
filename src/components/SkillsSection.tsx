@@ -1,13 +1,15 @@
-import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, Cpu, Wrench, type LucideIcon } from "lucide-react";
+import { type IconType } from "react-icons";
+import { SiReact, SiTypescript, SiTailwindcss, SiHtml5, SiJavascript, SiNodedotjs, SiExpress, SiPython, SiPostgresql, SiMikrotik, SiCisco, SiLinux } from "react-icons/si";
+import { Code2, Server, Wifi, Globe, Cpu, Wrench, MonitorCog, Network, Shield } from "lucide-react";
 
 interface SkillItem {
   name: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
 }
 
 interface SkillGroup {
   category: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<any>;
   items: SkillItem[];
 }
 
@@ -16,21 +18,21 @@ const skills: SkillGroup[] = [
     category: "Frontend",
     icon: Code2,
     items: [
-      { name: "React", icon: Globe },
-      { name: "TypeScript", icon: FileCode2 },
-      { name: "Tailwind CSS", icon: Paintbrush },
-      { name: "HTML/CSS", icon: Code2 },
-      { name: "JavaScript", icon: FileCode2 },
+      { name: "React", icon: SiReact },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "HTML/CSS", icon: SiHtml5 },
+      { name: "JavaScript", icon: SiJavascript },
     ],
   },
   {
     category: "Backend",
     icon: Server,
     items: [
-      { name: "Node.js", icon: Server },
-      { name: "Express", icon: Terminal },
-      { name: "Python", icon: FileCode2 },
-      { name: "PostgreSQL", icon: Database },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express", icon: SiExpress },
+      { name: "Python", icon: SiPython },
+      { name: "PostgreSQL", icon: SiPostgresql },
       { name: "REST API", icon: Globe },
     ],
   },
@@ -42,9 +44,9 @@ const skills: SkillGroup[] = [
       { name: "Hardware Maintenance", icon: Wrench },
       { name: "Software Maintenance", icon: MonitorCog },
       { name: "Networking", icon: Network },
-      { name: "Mikrotik & Cisco", icon: Router },
+      { name: "Mikrotik & Cisco", icon: SiCisco },
       { name: "Troubleshooting", icon: Shield },
-      { name: "Linux Administration", icon: Terminal },
+      { name: "Linux Administration", icon: SiLinux },
     ],
   },
 ];
