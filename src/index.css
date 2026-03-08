@@ -102,10 +102,14 @@
     @apply py-20 px-6;
   }
   .glass-card {
-    background-color: hsla(var(--card), 0.6);
+    background-color: hsla(220, 14%, 90%, 0.7);
     backdrop-filter: blur(12px);
-    border: 1px solid hsla(var(--border), 0.6);
+    border: 1px solid hsla(220, 14%, 75%, 0.7);
     @apply rounded-lg;
+  }
+  .dark .glass-card {
+    background-color: hsla(220, 18%, 10%, 0.6);
+    border-color: hsla(220, 14%, 18%, 0.6);
   }
   .grid-bg {
     background-image:
@@ -113,7 +117,15 @@
       linear-gradient(90deg, hsla(174, 72%, 30%, 0.18) 1px, transparent 1px);
     background-size: 60px 60px;
   }
+  .dark .grid-bg {
+    background-image:
+      linear-gradient(hsla(174, 72%, 52%, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(174, 72%, 52%, 0.03) 1px, transparent 1px);
+  }
   .glow-dot {
+    box-shadow: 0 0 20px 6px hsla(174, 72%, 35%, 0.25);
+  }
+  .dark .glow-dot {
     box-shadow: 0 0 20px 6px hsla(174, 72%, 52%, 0.15);
   }
   .code-line::before {
