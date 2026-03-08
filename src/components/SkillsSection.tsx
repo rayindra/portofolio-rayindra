@@ -2,17 +2,17 @@ const skills = [
   {
     category: "Frontend",
     icon: "{ }",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"],
+    items: ["React", "TypeScript", "Tailwind CSS", "HTML/CSS", "JavaScript"],
   },
   {
     category: "Backend",
     icon: "> _",
-    items: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB"],
+    items: ["Node.js", "Express", "Python", "PostgreSQL", "REST API"],
   },
   {
-    category: "DevOps & Tools",
+    category: "Hardware & Jaringan",
     icon: "~/",
-    items: ["Docker", "AWS", "Git", "CI/CD", "Linux"],
+    items: ["Networking", "Mikrotik", "Cisco", "Troubleshooting", "Linux"],
   },
 ];
 

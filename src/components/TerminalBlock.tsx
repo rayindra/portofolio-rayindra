@@ -1,9 +1,9 @@
 const lines = [
   { text: "const developer = {", delay: 0 },
-  { text: '  nama: "John Doe",', delay: 0.3 },
-  { text: '  role: "Full-Stack Developer",', delay: 0.6 },
-  { text: '  skills: ["React", "Node.js", "TypeScript"],', delay: 0.9 },
-  { text: '  passion: "Building great software",', delay: 1.2 },
+  { text: '  nama: "Rayindra Satrya Fitrian",', delay: 0.3 },
+  { text: '  role: "IT Enthusiast",', delay: 0.6 },
+  { text: '  skills: ["Frontend", "Backend", "Hardware", "Network"],', delay: 0.9 },
+  { text: '  passion: "Building reliable tech solutions",', delay: 1.2 },
   { text: "};", delay: 1.5 },
   { text: "", delay: 1.8 },
   { text: "developer.buildSomethingAmazing();", delay: 2.1 },
