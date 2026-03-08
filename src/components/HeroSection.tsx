@@ -21,14 +21,14 @@ const HeroSection = () => {
             Halo, nama saya
           </p>
           <h1 className="font-heading text-5xl md:text-7xl font-bold text-foreground mb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            John Doe.
+            Rayindra Satrya F.
           </h1>
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-muted-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             Saya membangun solusi digital.
           </h2>
           <p className="text-muted-foreground max-w-lg text-lg leading-relaxed mb-10 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            Seorang Software Engineer yang berfokus pada pengembangan aplikasi web modern,
-            scalable, dan user-friendly. Berpengalaman dalam React, Node.js, dan cloud technologies.
+            Seorang IT Enthusiast yang berpengalaman dalam front-end, back-end,
+            hardware, dan jaringan. Membangun solusi teknologi yang modern dan andal.
           </p>
           <div className="flex items-center gap-5 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             {[
