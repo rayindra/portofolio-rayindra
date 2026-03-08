@@ -1,11 +1,10 @@
-import { type IconType } from "react-icons";
-import { SiReact, SiTypescript, SiTailwindcss, SiHtml5, SiJavascript, SiNodedotjs, SiExpress, SiPython, SiPostgresql, SiMikrotik, SiCisco, SiLinux } from "react-icons/si";
-import { Code2, Server, Wifi, Globe, Cpu, Wrench, MonitorCog, Network, Shield } from "lucide-react";
+import { Code2, Server, Wifi } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useEffect, useState } from "react";
 
 interface SkillItem {
   name: string;
-  icon: React.ComponentType<any>;
+  level: number;
 }
 
 interface SkillGroup {
@@ -19,38 +18,64 @@ const skills: SkillGroup[] = [
     category: "Frontend",
     icon: Code2,
     items: [
-      { name: "React", icon: SiReact },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "HTML/CSS", icon: SiHtml5 },
-      { name: "JavaScript", icon: SiJavascript },
+      { name: "React", level: 80 },
+      { name: "TypeScript", level: 75 },
+      { name: "Tailwind CSS", level: 85 },
+      { name: "HTML/CSS", level: 90 },
+      { name: "JavaScript", level: 85 },
     ],
   },
   {
     category: "Backend",
     icon: Server,
     items: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "Express", icon: SiExpress },
-      { name: "Python", icon: SiPython },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "REST API", icon: Globe },
+      { name: "Node.js", level: 70 },
+      { name: "Express", level: 65 },
+      { name: "Python", level: 60 },
+      { name: "PostgreSQL", level: 55 },
+      { name: "REST API", level: 75 },
     ],
   },
   {
     category: "Hardware & Jaringan",
     icon: Wifi,
     items: [
-      { name: "PC Building", icon: Cpu },
-      { name: "Hardware Maintenance", icon: Wrench },
-      { name: "Software Maintenance", icon: MonitorCog },
-      { name: "Networking", icon: Network },
-      { name: "Mikrotik & Cisco", icon: SiCisco },
-      { name: "Troubleshooting", icon: Shield },
-      { name: "Linux Administration", icon: SiLinux },
+      { name: "PC Building", level: 85 },
+      { name: "Hardware Maintenance", level: 80 },
+      { name: "Software Maintenance", level: 75 },
+      { name: "Networking", level: 70 },
+      { name: "Mikrotik & Cisco", level: 65 },
+      { name: "Troubleshooting", level: 80 },
+      { name: "Linux Administration", level: 60 },
     ],
   },
 ];
+
+const SkillBar = ({ name, level, delay, animate }: { name: string; level: number; delay: number; animate: boolean }) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (animate) {
+      const timer = setTimeout(() => setWidth(level), delay);
+      return () => clearTimeout(timer);
+    }
+  }, [animate, level, delay]);
+
+  return (
+    <div className="space-y-1.5">
+      <div className="flex justify-between items-center text-sm">
+        <span className="text-foreground font-medium">{name}</span>
+        <span className="text-primary font-heading font-semibold">{width}%</span>
+      </div>
+      <div className="h-2.5 w-full rounded-full bg-muted overflow-hidden">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-primary/80 to-primary transition-all duration-1000 ease-out"
+          style={{ width: `${width}%` }}
+        />
+      </div>
+    </div>
+  );
+};
 
 const SkillsSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -73,7 +98,7 @@ const SkillsSection = () => {
               className={`glass-card p-6 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${200 + i * 150}ms`, borderColor: "hsla(220, 14%, 18%, 0.6)" }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-5">
                 <span className="text-primary bg-primary/10 p-2 rounded">
                   <group.icon size={18} />
                 </span>
@@ -81,17 +106,17 @@ const SkillsSection = () => {
                   {group.category}
                 </h3>
               </div>
-              <ul className="space-y-2.5">
-                {group.items.map((skill) => (
-                  <li
+              <div className="space-y-4">
+                {group.items.map((skill, j) => (
+                  <SkillBar
                     key={skill.name}
-                    className="text-muted-foreground text-sm flex items-center gap-2 group-hover:text-secondary-foreground transition-colors"
-                  >
-                    <skill.icon size={14} className="text-primary/70" />
-                    {skill.name}
-                  </li>
+                    name={skill.name}
+                    level={skill.level}
+                    delay={400 + i * 200 + j * 100}
+                    animate={isVisible}
+                  />
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
