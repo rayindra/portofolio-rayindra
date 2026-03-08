@@ -1,6 +1,7 @@
 import { type IconType } from "react-icons";
 import { SiReact, SiTypescript, SiTailwindcss, SiHtml5, SiJavascript, SiNodedotjs, SiExpress, SiPython, SiPostgresql, SiMikrotik, SiCisco, SiLinux } from "react-icons/si";
 import { Code2, Server, Wifi, Globe, Cpu, Wrench, MonitorCog, Network, Shield } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface SkillItem {
   name: string;
@@ -52,21 +53,25 @@ const skills: SkillGroup[] = [
 ];
 
 const SkillsSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="keahlian" className="section-padding relative">
       <div className="absolute inset-0 grid-bg opacity-50" />
-      <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className="font-heading text-2xl font-bold mb-2">
-          <span className="text-primary mr-2">02.</span>
-          Keahlian
-        </h2>
-        <div className="h-px bg-border mt-2 mb-10" />
+      <div ref={ref} className="max-w-4xl mx-auto relative z-10">
+        <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <h2 className="font-heading text-2xl font-bold mb-2">
+            <span className="text-primary mr-2">02.</span>
+            Keahlian
+          </h2>
+          <div className="h-px bg-border mt-2 mb-10" />
+        </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {skills.map((group) => (
+          {skills.map((group, i) => (
             <div
               key={group.category}
-              className="glass-card p-6 hover:border-primary/30 transition-all duration-300 group"
-              style={{ borderColor: "hsla(220, 14%, 18%, 0.6)" }}
+              className={`glass-card p-6 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              style={{ transitionDelay: `${200 + i * 150}ms`, borderColor: "hsla(220, 14%, 18%, 0.6)" }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-primary bg-primary/10 p-2 rounded">
