@@ -32,9 +32,9 @@ const HeroSection = () => {
           </p>
           <div className="flex items-center gap-5 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             {[
-              { icon: Github, href: "#" },
-              { icon: Linkedin, href: "#" },
-              { icon: Mail, href: "#kontak" },
+              { icon: Github, href: "https://github.com/rayindra" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/rayindraraia" },
+              { icon: Mail, href: "mailto:rayindrasatrya@gmail.com" },
             ].map(({ icon: Icon, href }, i) => (
               <a
                 key={i}

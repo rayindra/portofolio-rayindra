@@ -16,15 +16,15 @@ const ContactSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Mail size={16} className="text-primary" />
-            hello@johndoe.dev
+            rayindrasatrya@gmail.com
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin size={16} className="text-primary" />
-            Jakarta, Indonesia
+            Indonesia
           </div>
         </div>
         <a
-          href="mailto:hello@johndoe.dev"
+          href="mailto:rayindrasatrya@gmail.com"
           className="inline-flex items-center gap-2 border border-primary text-primary px-8 py-3 rounded-md font-heading text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           <Send size={16} />
