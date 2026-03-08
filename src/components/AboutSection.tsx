@@ -1,3 +1,5 @@
+import profileImg from "@/assets/profile.jpg";
+
 const AboutSection = () => {
   return (
     <section id="tentang" className="section-padding relative">
@@ -37,9 +39,7 @@ const AboutSection = () => {
             {/* Decorative grid */}
             <div className="absolute inset-0 grid-bg" />
             <div className="relative z-10">
-               <div className="w-32 h-32 rounded-full bg-secondary border-2 border-primary/30 flex items-center justify-center text-4xl font-heading font-bold text-primary glow-dot">
-                 RS
-               </div>
+               <img src={profileImg} alt="Rayindra Satrya Fitrian" className="w-32 h-32 rounded-full border-2 border-primary/30 object-cover glow-dot" />
                <p className="mt-4 text-sm text-muted-foreground text-center">IT Enthusiast</p>
                <p className="text-xs text-primary/60 font-mono text-center mt-1">~/rayindra</p>
             </div>
