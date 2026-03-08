@@ -3,22 +3,25 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "E-Ray's Printing",
     description:
-      "Platform e-commerce full-stack dengan fitur payment gateway, manajemen produk, dan dashboard analytics.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/rayindra/rays-print-shop",
   },
   {
     title: "Task Management App",
     description:
       "Aplikasi manajemen tugas real-time dengan fitur kolaborasi tim, drag & drop, dan notifikasi.",
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+    github: "#",
   },
   {
     title: "IoT Monitoring Dashboard",
     description:
       "Dashboard monitoring perangkat IoT dengan visualisasi data real-time dan sistem alert otomatis.",
     tech: ["React", "Python", "MQTT", "InfluxDB"],
+    github: "#",
   },
 ];
 
