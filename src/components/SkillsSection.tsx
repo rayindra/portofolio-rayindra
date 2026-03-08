@@ -4,12 +4,12 @@ import { Code2, Server, Wifi, Globe, Cpu, Wrench, MonitorCog, Network, Shield } 
 
 interface SkillItem {
   name: string;
-  icon: IconType | React.ComponentType<{ size?: number; className?: string }>;
+  icon: React.ComponentType<any>;
 }
 
 interface SkillGroup {
   category: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  icon: React.ComponentType<any>;
   items: SkillItem[];
 }
 
