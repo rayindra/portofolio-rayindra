@@ -109,8 +109,8 @@
   }
   .grid-bg {
     background-image:
-      linear-gradient(hsla(174, 72%, 35%, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsla(174, 72%, 35%, 0.08) 1px, transparent 1px);
+      linear-gradient(hsla(174, 72%, 30%, 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(174, 72%, 30%, 0.18) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .glow-dot {
