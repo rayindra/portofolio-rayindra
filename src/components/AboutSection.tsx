@@ -1,3 +1,5 @@
+import profileImg from "@/assets/profile.jpg";
+
 const AboutSection = () => {
   return (
     <section id="tentang" className="section-padding relative">
