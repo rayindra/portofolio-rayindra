@@ -1,18 +1,49 @@
-const skills = [
+import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, type LucideIcon } from "lucide-react";
+
+interface SkillItem {
+  name: string;
+  icon: LucideIcon;
+}
+
+interface SkillGroup {
+  category: string;
+  icon: LucideIcon;
+  items: SkillItem[];
+}
+
+const skills: SkillGroup[] = [
   {
     category: "Frontend",
-    icon: "{ }",
-    items: ["React", "TypeScript", "Tailwind CSS", "HTML/CSS", "JavaScript"],
+    icon: Code2,
+    items: [
+      { name: "React", icon: Globe },
+      { name: "TypeScript", icon: FileCode2 },
+      { name: "Tailwind CSS", icon: Paintbrush },
+      { name: "HTML/CSS", icon: Code2 },
+      { name: "JavaScript", icon: FileCode2 },
+    ],
   },
   {
     category: "Backend",
-    icon: "> _",
-    items: ["Node.js", "Express", "Python", "PostgreSQL", "REST API"],
+    icon: Server,
+    items: [
+      { name: "Node.js", icon: Server },
+      { name: "Express", icon: Terminal },
+      { name: "Python", icon: FileCode2 },
+      { name: "PostgreSQL", icon: Database },
+      { name: "REST API", icon: Globe },
+    ],
   },
   {
     category: "Hardware & Jaringan",
-    icon: "~/",
-    items: ["Networking", "Mikrotik", "Cisco", "Troubleshooting", "Linux"],
+    icon: Wifi,
+    items: [
+      { name: "Networking", icon: Network },
+      { name: "Mikrotik", icon: Router },
+      { name: "Cisco", icon: Shield },
+      { name: "Troubleshooting", icon: MonitorCog },
+      { name: "Linux", icon: Terminal },
+    ],
   },
 ];
 
@@ -34,8 +65,8 @@ const SkillsSection = () => {
               style={{ borderColor: "hsla(220, 14%, 18%, 0.6)" }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-primary font-mono text-sm bg-primary/10 px-2 py-1 rounded">
-                  {group.icon}
+                <span className="text-primary bg-primary/10 p-2 rounded">
+                  <group.icon size={18} />
                 </span>
                 <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                   {group.category}
@@ -44,11 +75,11 @@ const SkillsSection = () => {
               <ul className="space-y-2.5">
                 {group.items.map((skill) => (
                   <li
-                    key={skill}
+                    key={skill.name}
                     className="text-muted-foreground text-sm flex items-center gap-2 group-hover:text-secondary-foreground transition-colors"
                   >
-                    <span className="text-primary text-xs">▹</span>
-                    {skill}
+                    <skill.icon size={14} className="text-primary/70" />
+                    {skill.name}
                   </li>
                 ))}
               </ul>
