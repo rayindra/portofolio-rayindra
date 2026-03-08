@@ -10,11 +10,11 @@ const projects = [
     github: "https://github.com/rayindra/rays-print-shop",
   },
   {
-    title: "Task Management App",
+    title: "IF22 : Outbreak",
     description:
-      "Aplikasi manajemen tugas real-time dengan fitur kolaborasi tim, drag & drop, dan notifikasi.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
-    github: "#",
+      "Game turn-based RPG berbasis Unity Engine dengan mekanisme pertarungan strategis dan alur cerita yang imersif.",
+    tech: ["Unity", "C#", "Game Dev"],
+    github: "https://github.com/rayindra/IF22_OUTBREAK",
   },
   {
     title: "IoT Monitoring Dashboard",
