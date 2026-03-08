@@ -11,8 +11,8 @@ interface TimelineItem {
 const experiences: TimelineItem[] = [
   {
     title: "IT Support Intern",
-    organization: "Magang IT Support",
-    period: "April 2025 — Sekarang",
+    organization: "PT. Anugerah Printer",
+    period: "April 2025 — Oktober 2025",
     type: "work",
     icon: Briefcase,
   },
