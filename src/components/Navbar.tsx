@@ -1,4 +1,4 @@
-const navItems = ["Tentang", "Keahlian", "Proyek", "Kontak"];
+const navItems = ["Tentang", "Keahlian", "Pengalaman", "Proyek", "Kontak"];
 
 const Navbar = () => {
   return (
