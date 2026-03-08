@@ -1,4 +1,4 @@
-import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, type LucideIcon } from "lucide-react";
+import { Code2, Server, Wifi, Globe, FileCode2, Paintbrush, Database, Terminal, Network, Router, Shield, MonitorCog, Cpu, Wrench, type LucideIcon } from "lucide-react";
 
 interface SkillItem {
   name: string;
