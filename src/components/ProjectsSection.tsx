@@ -3,22 +3,26 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "E-Ray's Printing",
     description:
-      "Platform e-commerce full-stack dengan fitur payment gateway, manajemen produk, dan dashboard analytics.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/rayindra/rays-print-shop",
+    live: "https://e-rays.netlify.app/",
   },
   {
-    title: "Task Management App",
+    title: "IF22 : Outbreak",
     description:
-      "Aplikasi manajemen tugas real-time dengan fitur kolaborasi tim, drag & drop, dan notifikasi.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+      "Game turn-based RPG berbasis Unity Engine dengan mekanisme pertarungan strategis dan alur cerita yang imersif.",
+    tech: ["Unity", "C#", "Game Dev"],
+    github: "https://github.com/rayindra/IF22_OUTBREAK",
   },
   {
     title: "IoT Monitoring Dashboard",
     description:
       "Dashboard monitoring perangkat IoT dengan visualisasi data real-time dan sistem alert otomatis.",
     tech: ["React", "Python", "MQTT", "InfluxDB"],
+    github: "#",
   },
 ];
 
@@ -45,16 +49,22 @@ const ProjectsSection = () => {
               <div className="flex items-center justify-between mb-5">
                 <Folder className="text-primary" size={32} strokeWidth={1.5} />
                 <div className="flex gap-3 text-muted-foreground">
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     <Github size={18} />
                   </a>
-                  <a href="#" className="hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                     <ExternalLink size={18} />
                   </a>
                 </div>
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                {project.title}
+                {project.live ? (
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    {project.title}
+                  </a>
+                ) : (
+                  project.title
+                )}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
                 {project.description}
