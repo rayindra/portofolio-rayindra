@@ -9,48 +9,84 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume to full
-    audio.volume = 1.0;
+    audio.volume = 1;
+    audio.muted = false;
 
-    const tryPlay = async () => {
+    const log = (...args: unknown[]) => console.log("[bg-audio]", ...args);
+
+    const start = async (reason: string) => {
       try {
-        await audio.play();
+        audio.muted = false;
+        audio.volume = 1;
+        const p = audio.play();
+        await p;
+        log("playing", { reason });
+        return true;
       } catch (err) {
-        // Autoplay blocked - wait for user interaction
+        log("play blocked", { reason, err });
+        return false;
       }
     };
 
-    // Try to play immediately
-    tryPlay();
+    const interactionEvents: Array<keyof WindowEventMap> = [
+      "pointerup",
+      "touchend",
+      "click",
+      "keydown",
+      "mouseup",
+    ];
 
-    // If autoplay blocked, play on first user interaction
-    const onInteraction = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", onInteraction);
-      window.removeEventListener("keydown", onInteraction);
-      window.removeEventListener("touchstart", onInteraction);
-      window.removeEventListener("scroll", onInteraction);
+    const removeInteractionListeners = () => {
+      interactionEvents.forEach((evt) => window.removeEventListener(evt, onInteraction));
     };
 
-    window.addEventListener("click", onInteraction, { passive: true });
-    window.addEventListener("keydown", onInteraction, { passive: true });
-    window.addEventListener("touchstart", onInteraction, { passive: true });
-    window.addEventListener("scroll", onInteraction, { passive: true });
+    const onPlaying = () => {
+      log("event:playing");
+      removeInteractionListeners();
+    };
+
+    const onError = () => {
+      log("event:error", audio.error);
+    };
+
+    const onCanPlay = () => {
+      log("event:canplay");
+    };
+
+    const onInteraction = () => {
+      // IMPORTANT: only remove listeners after we actually start playing.
+      start("interaction").then((ok) => {
+        if (ok) removeInteractionListeners();
+      });
+    };
+
+    // Try immediate autoplay (may be blocked on mobile)
+    start("mount");
+
+    // Fallback: start on the first qualifying user gesture (iOS often prefers touchend/pointerup)
+    interactionEvents.forEach((evt) => window.addEventListener(evt, onInteraction));
+
+    audio.addEventListener("playing", onPlaying);
+    audio.addEventListener("error", onError);
+    audio.addEventListener("canplay", onCanPlay);
 
     return () => {
       audio.pause();
-      window.removeEventListener("click", onInteraction);
-      window.removeEventListener("keydown", onInteraction);
-      window.removeEventListener("touchstart", onInteraction);
-      window.removeEventListener("scroll", onInteraction);
+      removeInteractionListeners();
+      audio.removeEventListener("playing", onPlaying);
+      audio.removeEventListener("error", onError);
+      audio.removeEventListener("canplay", onCanPlay);
     };
   }, []);
 
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    setIsMuted((prev) => {
+      audio.muted = !prev;
+      return !prev;
+    });
   };
 
   return (
