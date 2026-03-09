@@ -9,10 +9,18 @@ const BackgroundMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const tryPlay = () => {
-      audio.play().catch(() => {});
+    // Set volume to full
+    audio.volume = 1.0;
+
+    const tryPlay = async () => {
+      try {
+        await audio.play();
+      } catch (err) {
+        // Autoplay blocked - wait for user interaction
+      }
     };
 
+    // Try to play immediately
     tryPlay();
 
     // If autoplay blocked, play on first user interaction
@@ -21,17 +29,20 @@ const BackgroundMusic = () => {
       window.removeEventListener("click", onInteraction);
       window.removeEventListener("keydown", onInteraction);
       window.removeEventListener("touchstart", onInteraction);
+      window.removeEventListener("scroll", onInteraction);
     };
 
-    window.addEventListener("click", onInteraction);
-    window.addEventListener("keydown", onInteraction);
-    window.addEventListener("touchstart", onInteraction);
+    window.addEventListener("click", onInteraction, { passive: true });
+    window.addEventListener("keydown", onInteraction, { passive: true });
+    window.addEventListener("touchstart", onInteraction, { passive: true });
+    window.addEventListener("scroll", onInteraction, { passive: true });
 
     return () => {
       audio.pause();
       window.removeEventListener("click", onInteraction);
       window.removeEventListener("keydown", onInteraction);
       window.removeEventListener("touchstart", onInteraction);
+      window.removeEventListener("scroll", onInteraction);
     };
   }, []);
 
