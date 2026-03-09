@@ -66,5 +66,3 @@ const BackgroundMusic = () => {
 };
 
 export default BackgroundMusic;
-
-export default BackgroundMusic;
