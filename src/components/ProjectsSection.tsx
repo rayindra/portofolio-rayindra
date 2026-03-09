@@ -5,7 +5,7 @@ const projects = [
   {
     title: "DEVEATER.io",
     description:
-      "Platform developer resources dan tools untuk meningkatkan produktivitas dan workflow development.",
+      "Game website terinspirasi dari agar.io dengan mekanisme makan dan tumbuh, dengan karakter bahasa pemrogaman dan power ups yang unik untuk meningkatkan pengalaman bermain dan strategi pemain.",
     tech: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/rayindra/deveater.io",
     live: "https://deveater.vercel.app/",
