@@ -8,7 +8,7 @@ const projects = [
       "Platform developer resources dan tools untuk meningkatkan produktivitas dan workflow development.",
     tech: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/rayindra/deveater.io",
-    live: "https://deveater.netlify.app/",
+    live: "https://deveater.vercel.app/",
   },
   {
     title: "E-Ray's Printing",
