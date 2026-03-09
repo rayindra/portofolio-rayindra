@@ -3,6 +3,14 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const projects = [
   {
+    title: "DEVEATER.io",
+    description:
+      "Platform developer resources dan tools untuk meningkatkan produktivitas dan workflow development.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/rayindra/deveater.io",
+    live: "https://deveater.netlify.app/",
+  },
+  {
     title: "E-Ray's Printing",
     description:
       "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",

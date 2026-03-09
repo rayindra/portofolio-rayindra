@@ -4,46 +4,109 @@ import { Volume2, VolumeX } from "lucide-react";
 const BackgroundMusic = () => {
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const wasPlayingRef = useRef(false);
+
+  // Auto-mute when tab/app is not visible
+  useEffect(() => {
+    const handleVisibility = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      if (document.hidden) {
+        wasPlayingRef.current = !audio.paused && !audio.muted;
+        audio.muted = true;
+      } else {
+        // Restore previous state only if user hasn't manually muted
+        if (wasPlayingRef.current) {
+          audio.muted = false;
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const tryPlay = () => {
-      audio.play().catch(() => {});
+    audio.volume = 1;
+    audio.muted = false;
+
+    const log = (...args: unknown[]) => console.log("[bg-audio]", ...args);
+
+    const start = async (reason: string) => {
+      try {
+        audio.muted = false;
+        audio.volume = 1;
+        const p = audio.play();
+        await p;
+        log("playing", { reason });
+        return true;
+      } catch (err) {
+        log("play blocked", { reason, err });
+        return false;
+      }
     };
 
-    tryPlay();
+    const interactionEvents: Array<keyof WindowEventMap> = [
+      "pointerup",
+      "touchend",
+      "click",
+      "keydown",
+      "mouseup",
+    ];
 
-    // If autoplay blocked, play on first user interaction
+    const removeInteractionListeners = () => {
+      interactionEvents.forEach((evt) => window.removeEventListener(evt, onInteraction));
+    };
+
+    const onPlaying = () => {
+      log("event:playing");
+      removeInteractionListeners();
+    };
+
+    const onError = () => {
+      log("event:error", audio.error);
+    };
+
     const onInteraction = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", onInteraction);
-      window.removeEventListener("keydown", onInteraction);
-      window.removeEventListener("touchstart", onInteraction);
+      start("interaction").then((ok) => {
+        if (ok) removeInteractionListeners();
+      });
     };
 
-    window.addEventListener("click", onInteraction);
-    window.addEventListener("keydown", onInteraction);
-    window.addEventListener("touchstart", onInteraction);
+    start("mount");
+
+    interactionEvents.forEach((evt) => window.addEventListener(evt, onInteraction));
+
+    audio.addEventListener("playing", onPlaying);
+    audio.addEventListener("error", onError);
 
     return () => {
       audio.pause();
-      window.removeEventListener("click", onInteraction);
-      window.removeEventListener("keydown", onInteraction);
-      window.removeEventListener("touchstart", onInteraction);
+      removeInteractionListeners();
+      audio.removeEventListener("playing", onPlaying);
+      audio.removeEventListener("error", onError);
     };
   }, []);
 
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    setIsMuted((prev) => {
+      const next = !prev;
+      audio.muted = next;
+      wasPlayingRef.current = !next;
+      return next;
+    });
   };
 
   return (
     <>
+      <link rel="preload" href="/call-of-silence-reff.mp3" as="fetch" crossOrigin="anonymous" />
       <audio
         ref={audioRef}
         loop
