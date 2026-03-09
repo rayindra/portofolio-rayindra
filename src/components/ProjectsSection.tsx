@@ -8,7 +8,7 @@ const projects = [
       "Platform percetakan online untuk memesan berbagai layanan cetak dengan mudah dan cepat.",
     tech: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/rayindra/rays-print-shop",
-    live: "https://e-rays.netlify.app/",
+    live: "https://erays.vercel.app/",
   },
   {
     title: "IF22 : Outbreak",
@@ -16,13 +16,6 @@ const projects = [
       "Game turn-based RPG berbasis Unity Engine dengan mekanisme pertarungan strategis dan alur cerita yang imersif.",
     tech: ["Unity", "C#", "Game Dev"],
     github: "https://github.com/rayindra/IF22_OUTBREAK",
-  },
-  {
-    title: "IoT Monitoring Dashboard",
-    description:
-      "Dashboard monitoring perangkat IoT dengan visualisasi data real-time dan sistem alert otomatis.",
-    tech: ["React", "Python", "MQTT", "InfluxDB"],
-    github: "#",
   },
 ];
 
