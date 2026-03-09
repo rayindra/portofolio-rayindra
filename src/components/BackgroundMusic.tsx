@@ -4,6 +4,28 @@ import { Volume2, VolumeX } from "lucide-react";
 const BackgroundMusic = () => {
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const wasPlayingRef = useRef(false);
+
+  // Auto-mute when tab/app is not visible
+  useEffect(() => {
+    const handleVisibility = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      if (document.hidden) {
+        wasPlayingRef.current = !audio.paused && !audio.muted;
+        audio.muted = true;
+      } else {
+        // Restore previous state only if user hasn't manually muted
+        if (wasPlayingRef.current) {
+          audio.muted = false;
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -49,33 +71,24 @@ const BackgroundMusic = () => {
       log("event:error", audio.error);
     };
 
-    const onCanPlay = () => {
-      log("event:canplay");
-    };
-
     const onInteraction = () => {
-      // IMPORTANT: only remove listeners after we actually start playing.
       start("interaction").then((ok) => {
         if (ok) removeInteractionListeners();
       });
     };
 
-    // Try immediate autoplay (may be blocked on mobile)
     start("mount");
 
-    // Fallback: start on the first qualifying user gesture (iOS often prefers touchend/pointerup)
     interactionEvents.forEach((evt) => window.addEventListener(evt, onInteraction));
 
     audio.addEventListener("playing", onPlaying);
     audio.addEventListener("error", onError);
-    audio.addEventListener("canplay", onCanPlay);
 
     return () => {
       audio.pause();
       removeInteractionListeners();
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("error", onError);
-      audio.removeEventListener("canplay", onCanPlay);
     };
   }, []);
 
@@ -84,13 +97,16 @@ const BackgroundMusic = () => {
     if (!audio) return;
 
     setIsMuted((prev) => {
-      audio.muted = !prev;
-      return !prev;
+      const next = !prev;
+      audio.muted = next;
+      wasPlayingRef.current = !next;
+      return next;
     });
   };
 
   return (
     <>
+      <link rel="preload" href="/call-of-silence-reff.mp3" as="fetch" crossOrigin="anonymous" />
       <audio
         ref={audioRef}
         loop
