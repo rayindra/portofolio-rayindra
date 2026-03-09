@@ -106,12 +106,12 @@ const BackgroundMusic = () => {
 
   return (
     <>
-      <link rel="preload" href="/call-of-silence-reff.mp3" as="fetch" crossOrigin="anonymous" />
+      <link rel="preload" href="/bgmusic.mp3" as="fetch" crossOrigin="anonymous" />
       <audio
         ref={audioRef}
         loop
         preload="auto"
-        src="/call-of-silence-reff.mp3"
+        src="/bgmusic.mp3"
       />
       <button
         onClick={toggleMute}
