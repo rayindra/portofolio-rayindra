@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://username.github.io/nama-repo",
+  "homepage": "https://rayindra.github.io/portofolio-rayindra",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
