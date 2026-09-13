@@ -1,5 +1,12 @@
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Github, Linkedin, Instagram } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const socials = [
+  { icon: Github, href: "https://github.com/rayindra", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/rayindraraia", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/rayindraraia/", label: "Instagram" },
+  { icon: Mail, href: "mailto:rayindrasatrya@gmail.com", label: "Email" },
+];
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -35,6 +42,20 @@ const ContactSection = () => {
           <Send size={16} />
           Kirim Email
         </a>
+        <div className={`flex items-center justify-center gap-5 mt-8 transition-all duration-700 delay-[500ms] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          {socials.map(({ icon: Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            >
+              <Icon size={22} />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

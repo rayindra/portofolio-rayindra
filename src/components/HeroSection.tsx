@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 import TerminalBlock from "./TerminalBlock";
 import FloatingIcons from "./FloatingIcons";
 
@@ -34,6 +34,7 @@ const HeroSection = () => {
             {[
               { icon: Github, href: "https://github.com/rayindra" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/rayindraraia" },
+              { icon: Instagram, href: "https://www.instagram.com/rayindraraia/" },
               { icon: Mail, href: "mailto:rayindrasatrya@gmail.com" },
             ].map(({ icon: Icon, href }, i) => (
               <a
