@@ -16,7 +16,7 @@ const ContactSection = () => {
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div ref={ref} className="max-w-lg mx-auto text-center relative z-10">
         <p className={`text-primary text-sm font-mono mb-2 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          04. Selanjutnya
+          06. Selanjutnya
         </p>
         <h2 className={`font-heading text-4xl font-bold text-foreground mb-4 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           Mari Terhubung
