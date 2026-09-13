@@ -19,11 +19,20 @@ const projects = [
     live: "https://erays.vercel.app/",
   },
   {
-    title: "IF22 : Outbreak",
+    title: "printer-portofolio",
     description:
-      "Game turn-based RPG berbasis Unity Engine dengan mekanisme pertarungan strategis dan alur cerita yang imersif.",
+      "Website portofolio untuk Anugerah Printer yang menampilkan profil perusahaan, layanan percetakan, dan informasi kontak secara modern dan responsif.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/harikahono/printer-portfolio",
+    live: "https://anugerahprinter.com",
+  },
+  {
+    title: "IF22 : The One",
+    description:
+      "Game berbasis Unity Engine dengan mekanisme pertarungan strategis dan alur cerita yang imersif.",
     tech: ["Unity", "C#", "Game Dev"],
-    github: "https://github.com/rayindra/IF22_OUTBREAK",
+    github: "https://github.com/rayindra/TA-2526-2-1152200001",
+    live: "https://ryuuzentsu.itch.io/if-22-the-one",
   },
 ];
 
@@ -50,12 +59,14 @@ const ProjectsSection = () => {
               <div className="flex items-center justify-between mb-5">
                 <Folder className="text-primary" size={32} strokeWidth={1.5} />
                 <div className="flex gap-3 text-muted-foreground">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-primary transition-colors">
                     <Github size={18} />
                   </a>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                    <ExternalLink size={18} />
-                  </a>
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live" className="hover:text-primary transition-colors">
+                      <ExternalLink size={18} />
+                    </a>
+                  )}
                 </div>
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
