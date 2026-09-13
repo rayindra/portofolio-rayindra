@@ -44,7 +44,7 @@ const ProjectsSection = () => {
       <div ref={ref} className="max-w-4xl mx-auto">
         <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="font-heading text-2xl font-bold mb-2">
-            <span className="text-primary mr-2">03.</span>
+            <span className="text-primary mr-2">05.</span>
             Proyek
           </h2>
           <div className="h-px bg-border mt-2 mb-10" />
