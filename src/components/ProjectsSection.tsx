@@ -22,7 +22,7 @@ const projects = [
     title: "printer-portofolio",
     description:
       "Website portofolio untuk Anugerah Printer yang menampilkan profil perusahaan, layanan percetakan, dan informasi kontak secara modern dan responsif.",
-    tech: ["React", "TypeScript", "Tailwind"],
+    tech: ["HTML", "JavaScript", "CSS"],
     github: "https://github.com/harikahono/printer-portfolio",
     live: "https://anugerahprinter.com",
   },
