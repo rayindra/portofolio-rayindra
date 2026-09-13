@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-const navItems = ["Tentang", "Keahlian", "Pengalaman", "Proyek", "Kontak"];
+const navItems = ["Tentang", "Keahlian", "Pengalaman", "Pendidikan", "Proyek", "Kontak"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
