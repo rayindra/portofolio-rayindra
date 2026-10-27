@@ -32,23 +32,6 @@ const AboutSection = () => {
               clean architecture dan best practices. Saya percaya bahwa kode yang baik adalah kode
               yang mudah dibaca, di-maintain, dan di-scale.
             </p>
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              {[
-                { value: "5+", label: "Tahun Pengalaman" },
-                { value: "30+", label: "Proyek Selesai" },
-                { value: "15+", label: "Klien Puas" },
-              ].map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`text-center glass-card p-4 transition-all duration-500 hover:border-primary/30 hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                  style={{ transitionDelay: `${400 + i * 150}ms` }}
-                >
-                  <div className="text-2xl font-heading font-bold text-primary">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
           <div
             ref={imageRef}
