@@ -28,10 +28,13 @@ const AboutSection = () => {
               keahlian di berbagai teknologi modern.
             </p>
             <p>
-              Saat ini, saya berfokus pada bidang IT Support, Cybersecurity, dan DevSecOps.
-              Saya percaya bahwa sistem yang baik adalah sistem yang aman, andal, dan mudah
-              di-maintain.
+              Saat ini, saya berfokus pada bidang IT Support, Cybersecurity, dan DevSecOps —
+              mulai dari menjaga kelancaran operasional perangkat dan jaringan, memperkuat
+              keamanan sistem, hingga menerapkan praktik keamanan di setiap tahap pengembangan
+              aplikasi. Saya percaya bahwa sistem yang baik adalah sistem yang aman, andal,
+              dan mudah di-maintain.
             </p>
+
 
           </div>
           <div
