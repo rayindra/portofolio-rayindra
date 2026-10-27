@@ -28,10 +28,11 @@ const AboutSection = () => {
               keahlian di berbagai teknologi modern.
             </p>
             <p>
-              Saat ini, saya berfokus pada pengembangan aplikasi full-stack dengan pendekatan
-              clean architecture dan best practices. Saya percaya bahwa kode yang baik adalah kode
-              yang mudah dibaca, di-maintain, dan di-scale.
+              Saat ini, saya berfokus pada bidang IT Support, Cybersecurity, dan DevSecOps.
+              Saya percaya bahwa sistem yang baik adalah sistem yang aman, andal, dan mudah
+              di-maintain.
             </p>
+
           </div>
           <div
             ref={imageRef}
