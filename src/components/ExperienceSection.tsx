@@ -13,7 +13,7 @@ const experiences: TimelineItem[] = [
   {
     title: "IT Support Intern",
     organization: "PT. Anugerah Printer",
-    period: "April 2025 — Oktober 2025",
+    period: "April 2025 — Agustus 2025",
     type: "work",
     icon: Briefcase,
   },
